@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    User->>Browser: Type text into the note field
+    User->>Browser: Click the "Submit" button
+    Browser->>Server: POST /notes with new note data (JSON)
+    Server-->>Browser: 302 Redirect to /notes
+    Browser->>Server: GET /notes
+    Server-->>Browser: Updated HTML with the new note
+    Browser-->>User: Page is reloaded and new note is visible 
